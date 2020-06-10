@@ -48,6 +48,9 @@ if [[ "${INSTALLED_NDK_VERSION}" != "${NDK_VERSION}" ]]; then
   exit 1
 fi
 
+# NDK ez-install
+"$ANDROID_HOME/tools/bin/sdkmanager" "ndk;$(./gradlew -q printNdkVersion | tail -1)"
+
 rustup target add "${RUST_TARGETS[@]}"
 
 # Determine the Java command to use to start the JVM.
